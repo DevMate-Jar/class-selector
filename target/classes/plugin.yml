@@ -1,0 +1,8 @@
+name: ChooseYourClass
+version: '1.0-SNAPSHOT'
+main: dev.mate.chooseYourClass.ChooseYourClass
+api-version: '1.21'
+commands:
+  classmenu:
+    description: Opens a menu for different classes.
+    usage: /<command>
