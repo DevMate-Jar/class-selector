@@ -1,5 +1,6 @@
 package dev.mate.chooseYourClass.Listener;
 
+import dev.mate.chooseYourClass.ManagerClasses.ManaManager;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -26,6 +27,11 @@ public class MageStaffListener implements Listener {
                 player.launchProjectile(Fireball.class);
                 player.sendMessage(ChatColor.RED + "You used the fire staff!");
                 player.playSound(player, Sound.ENTITY_BLAZE_SHOOT, 1.0f, 1.0f);
+            }
+            if(ManaManager.useMana(player, 25)){
+
+            }else{
+                player.sendMessage(ChatColor.RED + "You dont have enough mana.");
             }
 
         }

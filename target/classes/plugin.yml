@@ -6,3 +6,7 @@ commands:
   classmenu:
     description: Opens a menu for different classes.
     usage: /<command>
+
+  changeclass:
+    description: Allows the player to change the class.
+    usage: /<command>

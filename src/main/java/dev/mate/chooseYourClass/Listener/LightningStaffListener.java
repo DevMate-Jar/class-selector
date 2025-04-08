@@ -1,5 +1,6 @@
 package dev.mate.chooseYourClass.Listener;
 
+import dev.mate.chooseYourClass.ManagerClasses.ManaManager;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -30,6 +31,11 @@ public class LightningStaffListener implements Listener {
                 player.getWorld().strikeLightning(loc);
                 player.sendMessage(ChatColor.BLUE + "You used the lightning staff!");
                 player.playSound(player, Sound.ENTITY_LIGHTNING_BOLT_THUNDER, 1.0f, 1.0f);
+            }
+            if(ManaManager.useMana(player, 25)){
+
+            }else{
+                player.sendMessage(ChatColor.RED + "You dont have enough mana.");
             }
 
 

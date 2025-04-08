@@ -15,7 +15,7 @@ public class Assassin {
 
         ItemStack daggerItem = new ItemStack(Material.NETHERITE_SWORD);
         ItemMeta daggerMeta = daggerItem.getItemMeta();
-        daggerMeta.setDisplayName(ChatColor.GRAY + "Dagger");
+        daggerMeta.setDisplayName(ChatColor.DARK_GRAY + "Dagger");
         daggerItem.setItemMeta(daggerMeta);
         player.getInventory().addItem(daggerItem);
         if(player.isSneaking()){

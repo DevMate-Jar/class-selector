@@ -5,6 +5,7 @@ import dev.mate.chooseYourClass.ClasesPick.Assassin;
 import dev.mate.chooseYourClass.ChooseYourClass;
 import dev.mate.chooseYourClass.ClasesPick.Bruiser;
 import dev.mate.chooseYourClass.ClasesPick.Mage;
+import dev.mate.chooseYourClass.ManagerClasses.ClassManager;
 import org.bukkit.ChatColor;
 import org.bukkit.Sound;
 import org.bukkit.entity.HumanEntity;
@@ -40,32 +41,46 @@ public class ListadorClass implements Listener {
 
             if (item != null && item.hasItemMeta() && item.getItemMeta().hasDisplayName()) {
                 String displayName = item.getItemMeta().getDisplayName();
+
+                if(ClassManager.hasClass(player)){
+                    player.sendMessage(ChatColor.RED + "You have already selected a class!");
+                    player.playSound(player, Sound.ENTITY_WANDERING_TRADER_NO, 1.0f, 1.0f);
+                    player.closeInventory();
+                    e.setCancelled(true);
+                    return;
+                }
+                e.setCancelled(true);
+                player.closeInventory();
+
                 if(displayName.equals(ChatColor.RED + "Bruiser")){
                     player.setMaxHealth(player.getMaxHealth() * 2);
                 }else{
                     player.setMaxHealth(20.0);
                 }
                 if (displayName.equals(ChatColor.DARK_GRAY + "Assassin")) {
+                    ClassManager.setClass(player, "Assassin");
                     Assassin.activate(player);
                     player.sendMessage(ChatColor.DARK_GRAY + "You picked: Assassin!");
                     player.playSound(player, Sound.ENTITY_PLAYER_LEVELUP, 1.0f, 1.0f);
 
                 } else if (displayName.equals(ChatColor.BLUE + "Mage")) {
+                    ClassManager.setClass(player, "Mage");
                     Mage.activate(player);
                     player.sendMessage(ChatColor.BLUE + "You picked: Mage!");
                     player.playSound(player, Sound.ENTITY_PLAYER_LEVELUP, 1.0f, 1.0f);
 
                 } else if (displayName.equals(ChatColor.RED + "Bruiser")) {
+                    ClassManager.setClass(player, "Bruiser");
                     Bruiser.activate(player);
                     player.sendMessage(ChatColor.RED + "You picked: Bruiser!");
                     player.playSound(player, Sound.ENTITY_PLAYER_LEVELUP, 1.0f, 1.0f);
 
                 } else if (displayName.equals(ChatColor.GREEN + "Archer")) {
+                    ClassManager.setClass(player, "Archer");
                     Archer.activate(player);
                     player.sendMessage(ChatColor.GREEN + "You picked: Archer!");
                     player.playSound(player, Sound.ENTITY_PLAYER_LEVELUP, 1.0f, 1.0f);
                 }
-
             }
         }
     }
